@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="duke" class="com.code4j.springinaction.springidol.Juggler">
+        <constructor-arg value="15"/>
+    </bean>
+    <bean id="poeticDuke" class="com.code4j.springinaction.springidol.PoeticJuggler">
+        <constructor-arg value="15"/>
+        <constructor-arg ref="sonnet29"/>
+    </bean>
+    <bean id="sonnet29" class="com.code4j.springinaction.springidol.Sonnet29"/>
+
+    <bean id="stage" class="com.code4j.springinaction.springidol.Stage" factory-method="getInstance"/>
+
+    <bean id="auditorium" class="com.code4j.springinaction.springidol.Auditorium" init-method="turnOnLights"
+            destroy-method="turnOffLights"/>
+
+    <bean id="kenny" class="com.code4j.springinaction.springidol.Instrumentalist">
+        <property name="song" value="Jingle Bells"/>
+        <property name="age" value="37"/>
+    </bean>
+
+    <bean id="kenny2" class="com.code4j.springinaction.springidol.Instrumentalist">
+        <property name="song" value="Jingle Bells"/>
+        <property name="instrument" ref="saxophone"/>
+    </bean>
+
+    <bean id="kenny5" class="com.code4j.springinaction.springidol.Instrumentalist" autowire="byName">
+        <property name="song" value="Jingle Bells"/>
+        <!--<property name="instrument" ref="saxophone"/>-->
+    </bean>
+
+    <bean id="instrument" class="com.code4j.springinaction.springidol.Saxophone"/>
+    <bean id="saxophone" class="com.code4j.springinaction.springidol.Saxophone"/>
+    <bean id="piano" class="com.code4j.springinaction.springidol.Piano"/>
+
+
+    <bean id="kenny3" class="com.code4j.springinaction.springidol.Instrumentalist">
+        <property name="song" value="Jingle Bells"/>
+        <property name="instrument">
+            <bean class="com.code4j.springinaction.springidol.Saxophone"/>
+        </property>
+    </bean>
+
+
+    <bean id="kenny4" class="com.code4j.springinaction.springidol.Instrumentalist" p:song="Jingle Bells"
+            p:instrument-ref="saxophone">
+    </bean>
+    <bean id="hank" class="com.code4j.springinaction.springidol.OnemanBand">
+        <property name="instruments">
+            <list>
+                <ref bean="guitar"/>
+                <ref bean="cymbal"/>
+                <ref bean="harmonica"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="hank1" class="com.code4j.springinaction.springidol.OnemanBand">
+        <property name="instruments">
+            <set>
+                <ref bean="guitar"/>
+                <ref bean="cymbal"/>
+                <ref bean="harmonica"/>
+                <ref bean="harmonica"/>
+            </set>
+        </property>
+    </bean>
+    <bean id="guitar" class="com.code4j.springinaction.springidol.Guitar"/>
+    <bean id="cymbal" class="com.code4j.springinaction.springidol.Cymbal"/>
+    <bean id="harmonica" class="com.code4j.springinaction.springidol.Harmonica"/>
+</beans>
