@@ -14,9 +14,9 @@ public class InstrumentalistTest {
                 "com/code4j/springinaction/springidol/spring-idol.xml");
         Performer performer = (Performer) context.getBean("kenny3");
         performer.perform();
-        performer = (Performer) context.getBean("kenny4");
+        /*performer = (Performer) context.getBean("kenny4");
         performer.perform();
         performer = (Performer) context.getBean("kenny5");
-        performer.perform();
+        performer.perform();*/
     }
 }

@@ -73,7 +73,7 @@
     <bean id="harmonica" class="com.code4j.springinaction.springidol.Harmonica"/>
 
     <bean id="audience" class="com.code4j.springinaction.springidol.Audience"/>
-    <bean id="magician" class="com.code4j.springinaction.springidol.Magician"/>
+    <!--<bean id="magician" class="com.code4j.springinaction.springidol.Magician"/>-->
 
     <!-- <aop:config>
          <aop:aspect ref="audience">
@@ -89,7 +89,7 @@
     <context:annotation-config/>
     <context:component-scan base-package="com.code4j.springinaction.springidol"></context:component-scan>
 
-    <aop:config>
+    <!--<aop:config>
         <aop:aspect ref="audience">
             <aop:pointcut id="performance2"
                           expression="execution(* com.code4j.springinaction.springidol.Performer.perform(..))"/>
@@ -102,5 +102,21 @@
             <aop:pointcut id="thinking" expression="execution(* com.code4j.springinaction.springidol.Thinker.thinkOfSomething(String)) and args(thoughts)"/>
             <aop:before method="interceptThoughts" pointcut-ref="thinking" arg-names="thoughts"/>
         </aop:aspect>
-    </aop:config>
+    </aop:config>-->
+
+    <aop:aspectj-autoproxy />
+
+    <!--<bean id="criticismEngine" class="com.code4j.springinaction.springidol.CriticismEngineImpl">
+        <property name="criticismPool">
+            <list>
+                <value>I'm not being rude, but that woa appalling.</value>
+                <value>You may be the least talented person in this show.</value>
+                <value>Do everyone a favor and keep your day job.</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="com.code4j.springinaction.springidol.JudgeAspect" factory-method="aspectOf">
+        <property name="criticismEngine" ref="criticismEngine"/>
+    </bean>-->
 </beans>
